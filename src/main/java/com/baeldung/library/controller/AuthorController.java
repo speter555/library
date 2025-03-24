@@ -34,6 +34,8 @@ import com.baeldung.library.service.AuthorService;
 @RequestMapping("/authors")
 public class AuthorController {
 
+    private static final String ID_IS_BLANK_MESSAGE = "id is blank!";
+
     @Autowired
     private AuthorService authorService;
 
@@ -53,7 +55,7 @@ public class AuthorController {
     @GetMapping("/{id}")
     public ResponseEntity<AuthorDTO> getAuthorById(@PathVariable("id") String id) {
         if (StringUtils.isBlank(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id is blank!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ID_IS_BLANK_MESSAGE);
         }
         return ResponseEntity.ok(authorConverter.convertAuthorToAuthorDTO(authorService.findById(id)));
     }
@@ -68,7 +70,7 @@ public class AuthorController {
     @PostMapping
     public ResponseEntity<AuthorDTO> postAuthorById(@RequestBody AuthorWithoutIdDTO authorDTO) {
         if (authorDTO == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id is blank!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ID_IS_BLANK_MESSAGE);
         }
         authorDTO.validate();
         Author savedEntity = transactionTemplate
@@ -86,7 +88,7 @@ public class AuthorController {
     @DeleteMapping("/{id}")
     public ResponseEntity<AuthorDTO> deleteAuthorById(@PathVariable("id") String id) {
         if (StringUtils.isBlank(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id is blank!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ID_IS_BLANK_MESSAGE);
         }
 
         Author entity = authorService.findById(id);
@@ -106,7 +108,7 @@ public class AuthorController {
     @PutMapping("/{id}")
     public ResponseEntity<AuthorDTO> putAuthorById(@PathVariable("id") String id, @RequestBody AuthorWithoutIdDTO authorDTO) {
         if (StringUtils.isBlank(id)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id is blank!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ID_IS_BLANK_MESSAGE);
         }
         Author entity = authorService.findById(id);
         entity.setName(authorDTO.name());

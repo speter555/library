@@ -17,8 +17,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final String AUTHORS_PATH = "/authors/**";
-    private final String ADMIN_ROLE = "ADMIN";
+    private static final String AUTHORS_PATH = "/authors/**";
+    private static final String ADMIN_ROLE = "ADMIN";
 
     /**
      * {@link SecurityFilterChain} producer, "/authors/**" secured, use only admin role with basic authentication !

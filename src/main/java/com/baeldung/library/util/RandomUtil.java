@@ -180,7 +180,7 @@ public class RandomUtil {
      */
     public static String generateToken() {
         String token = StringUtils.left(UUID.randomUUID() + generateId(), 48);
-        LOGGER.debug("Generated token: [{0}]", token);
+        LOGGER.debug("Generated token: [{}]", token);
         return token;
     }
 
