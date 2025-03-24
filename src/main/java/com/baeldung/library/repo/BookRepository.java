@@ -13,5 +13,5 @@ import com.baeldung.library.domain.Book;
  */
 @RepositoryRestResource(collectionResourceRel = "books", path = "books")
 public interface BookRepository extends PagingAndSortingRepository<Book, String> {
-	//
+    //
 }

@@ -14,5 +14,5 @@ import com.baeldung.library.domain.Author;
  */
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, String>, PagingAndSortingRepository<Author, String> {
-	//
+    //
 }
