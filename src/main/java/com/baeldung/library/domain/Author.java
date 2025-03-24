@@ -1,34 +1,86 @@
 package com.baeldung.library.domain;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.baeldung.library.domain.base.BaseIdentifiedEntity;
+import com.baeldung.library.domain.enums.OriginCountry;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+/**
+ * Author table
+ * 
+ * @author speter555
+ * @since 0.1.0
+ */
 @Entity
-public class Author {
+@Table(name = "AUTHOR")
+public class Author extends BaseIdentifiedEntity {
 
-    @Id
-    @GeneratedValue
-    private long id;
-
+    /**
+     * + Name of author
+     */
     @NotNull
+    @Column(nullable = false)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Book> books;
+    /**
+     * Birthday of author
+     */
+    @Column(nullable = false)
+    private LocalDate birthDate;
 
+    /**
+     * OriginCountry of author
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 30)
+    private OriginCountry originCountry;
+
+    /**
+     * BookAuthor link table to books
+     */
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<BookAuthor> bookAuthors = new HashSet<>();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public OriginCountry getOriginCountry() {
+        return originCountry;
+    }
+
+    public void setOriginCountry(OriginCountry originCountry) {
+        this.originCountry = originCountry;
+    }
+
+    public Set<BookAuthor> getBookAuthors() {
+        return bookAuthors;
+    }
+
+    public void setBookAuthors(Set<BookAuthor> bookAuthors) {
+        this.bookAuthors = bookAuthors;
+    }
 }

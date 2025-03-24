@@ -1,11 +1,18 @@
 package com.baeldung.library.repo;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import com.baeldung.library.domain.Author;
 
-@RepositoryRestResource(collectionResourceRel = "authors", path = "authors")
-public interface AuthorRepository extends PagingAndSortingRepository<Author, Long> {
+/**
+ * Repository of {@link com.baeldung.library.domain.Author}
+ * 
+ * @author speter555
+ * @since 0.1.0
+ */
+@Repository
+public interface AuthorRepository extends JpaRepository<Author, String>, PagingAndSortingRepository<Author, String> {
 	//
 }
