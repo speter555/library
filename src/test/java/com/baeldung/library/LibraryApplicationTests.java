@@ -1,37 +1,43 @@
 package com.baeldung.library;
 
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.Matchers.emptyIterable;
-import static org.junit.Assert.assertThat;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
+import com.baeldung.library.domain.Book;
 import com.baeldung.library.repo.BookRepository;
 
-@RunWith(SpringRunner.class)
+/**
+ * Base application tests
+ * 
+ * @author speter555
+ * @since 0.1.0
+ */
 @SpringBootTest
-public class LibraryApplicationTests {
+class LibraryApplicationTests {
 
     @Autowired
     private BookRepository bookRepo;
 
     @Test
-    public void contextLoads() {
+    void contextLoads() {
         //
     }
 
     @Test
-    public void persistenceWorks() {
-        bookRepo.findAll();
+    void persistenceWorks() {
+        Assertions.assertNotNull(bookRepo.findAll(Sort.by(Sort.Direction.ASC, "id")));
     }
 
     @Test
-    public void dataExists() {
-        assertThat(bookRepo.findAll(), not(emptyIterable()));
+    void dataExists() {
+        Page<Book> books = bookRepo.findAll(PageRequest.of(0, 10));
+        Assertions.assertNotNull(books);
+
     }
 
 }

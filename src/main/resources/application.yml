@@ -1,0 +1,19 @@
+spring:
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: ADMIN
+  jpa:
+    show-sql: true
+logging:
+  level:
+    com:
+      baeldung: TRACE
+    org:
+      springframework:
+        data:
+          rest:
+            webmvc: WARN

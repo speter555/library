@@ -1,0 +1,197 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-testdata-01
+      author: speter555
+      changes:
+        - insert:
+            tableName: author
+            columns:
+              - column: { name: x__id, value: "1" }
+              - column: { name: name, value: "J.K. Rowling" }
+              - column: { name: birth_date, value: "1965-07-31" }
+              - column: { name: origin_country, value: "GB" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: author
+            columns:
+              - column: { name: x__id, value: "2" }
+              - column: { name: name, value: "George R.R. Martin" }
+              - column: { name: birth_date, value: "1948-09-20" }
+              - column: { name: origin_country, value: "US" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: author
+            columns:
+              - column: { name: x__id, value: "3" }
+              - column: { name: name, value: "J.R.R. Tolkien" }
+              - column: { name: birth_date, value: "1892-01-03" }
+              - column: { name: origin_country, value: "GB" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: author
+            columns:
+              - column: { name: x__id, value: "4" }
+              - column: { name: name, value: "Teszt Elek" }
+              - column: { name: birth_date, value: "1920-01-02" }
+              - column: { name: origin_country, value: "HU" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: author
+            columns:
+              - column: { name: x__id, value: "5" }
+              - column: { name: name, value: "Stephen King" }
+              - column: { name: birth_date, value: "1947-09-21" }
+              - column: { name: origin_country, value: "US" }
+              - column: { name: x__version, value: "0" }
+
+  - changeSet:
+      id: 003-testdata-02
+      author: speter555
+      changes:
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "1" }
+              - column: { name: title, value: "Harry Potter and the Philosopher's Stone" }
+              - column: { name: isbn, value: "978-0747532699" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "2" }
+              - column: { name: title, value: "Harry Potter and the Chamber of Secrets" }
+              - column: { name: isbn, value: "978-0747538493" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "3" }
+              - column: { name: title, value: "A Game of Thrones" }
+              - column: { name: isbn, value: "978-0553103540" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "4" }
+              - column: { name: title, value: "A Clash of Kings" }
+              - column: { name: isbn, value: "978-0553108033" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "5" }
+              - column: { name: title, value: "The Hobbit" }
+              - column: { name: isbn, value: "978-0261103344" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "6" }
+              - column: { name: title, value: "The Lord of the Rings" }
+              - column: { name: isbn, value: "978-0261102385" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "7" }
+              - column: { name: title, value: "Foundation" }
+              - column: { name: isbn, value: "978-0553293357" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "8" }
+              - column: { name: title, value: "I, Robot" }
+              - column: { name: isbn, value: "978-0553294385" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "9" }
+              - column: { name: title, value: "The Shining" }
+              - column: { name: isbn, value: "978-0307743657" }
+              - column: { name: x__version, value: "0" }
+
+        - insert:
+            tableName: book
+            columns:
+              - column: { name: x__id, value: "10" }
+              - column: { name: title, value: "It" }
+              - column: { name: isbn, value: "978-1501142970" }
+              - column: { name: x__version, value: "0" }
+
+  - changeSet:
+      id: 002-testdata-3
+      author: speter555
+      changes:
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "1" }
+              - column: { name: book_id, value: "1" }
+
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "1" }
+              - column: { name: book_id, value: "2" }
+
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "2" }
+              - column: { name: book_id, value: "3" }
+
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "2" }
+              - column: { name: book_id, value: "4" }
+
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "3" }
+              - column: { name: book_id, value: "5" }
+
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "3" }
+              - column: { name: book_id, value: "6" }
+
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "4" }
+              - column: { name: book_id, value: "7" }
+
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "4" }
+              - column: { name: book_id, value: "8" }
+
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "5" }
+              - column: { name: book_id, value: "9" }
+
+        - insert:
+            tableName: book_author
+            columns:
+              - column: { name: author_id, value: "5" }
+              - column: { name: book_id, value: "10" }

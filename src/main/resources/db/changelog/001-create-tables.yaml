@@ -1,0 +1,109 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-tables
+      author: speter555
+      changes:
+        - createTable:
+            tableName: author
+            columns:
+              - column:
+                  name: x__id
+                  type: varchar(30)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birth_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: origin_country
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: x__version
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+        - createIndex:
+            indexName: idx_author_name
+            tableName: author
+            unique: false
+            columns:
+              - column:
+                  name: name
+
+        - createTable:
+            tableName: book
+            columns:
+              - column:
+                  name: x__id
+                  type: varchar(30)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: isbn
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: x__version
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+        - createIndex:
+            indexName: idx_book_isbn
+            tableName: book
+            unique: true
+            columns:
+              - column:
+                  name: isbn
+
+        - createIndex:
+            indexName: idx_book_title
+            tableName: book
+            unique: false
+            columns:
+              - column:
+                  name: title
+
+        - createTable:
+            tableName: book_author
+            columns:
+              - column:
+                  name: book_id
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_book_author_book
+                    references: book(x__id)
+                    deleteCascade: true
+              - column:
+                  name: author_id
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_book_author_author
+                    references: author(x__id)
+                    deleteCascade: true
+
+        - addPrimaryKey:
+            tableName: book_author
+            columnNames: book_id, author_id
+            constraintName: pk_book_author
